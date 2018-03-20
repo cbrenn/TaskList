@@ -1,0 +1,32 @@
+<header>
+  <h1>Welcome to the Tasklist</h1>
+  <p> Here are the things to do<p>
+  </header>
+
+
+  <main class = "main-container">
+
+    <ul class ="buttons">
+      <li>
+        Add Task
+      </li>
+      <li>
+        All Tasks
+      </li>
+    </ul>
+    <ul>
+      <% @tasks.each do |task| %>
+      <li>
+        <strong><%= task.name %></strong>
+        <li class = "sub-list"> Description: <%= task.description
+        %></li>
+        <li class = "sub-list"> Status: <%= task.status
+        %></li>
+        <li class = "sub-list"> Priority: <%= task.priority
+        %></li>
+        <li class = "sub-list"> Start Date <%= task.start_date
+          %></li>
+        </li>
+        <% end %>
+      </ul>
+  </main>

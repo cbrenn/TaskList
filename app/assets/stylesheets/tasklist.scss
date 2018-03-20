@@ -1,0 +1,30 @@
+// Place all the styles related to the tasklist controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+header{
+  text-align: center;
+}
+li {
+  list-style-type: none;
+  text-decoration: underline;
+}
+
+.sub-list{
+  text-indent: 10px;
+  text-decoration: none;
+}
+
+.main-container{
+  display:grid;
+  grid-template-columns: 1fr 2fr
+
+}
+
+.buttons li{
+  display:block;
+  text-decoration: none;
+  padding: .3em;
+  border: solid black 2px;
+  margin: .5em;
+  text-align: center;
+}
