@@ -1,0 +1,37 @@
+<header>
+  <h1>Welcome to the Tasklist</h1>
+  <p> Here are the things to do<p>
+  </header>
+
+
+  <main class = "main-container">
+
+    <ul class ="buttons">
+      <li>
+        Add Task
+          <%= link_to("Add a new Task", new_task_path) %>
+      </li>
+      
+    </ul>
+
+    <ul>
+      <% @tasks.each do |task| %>
+      <li>
+
+        <strong><%= task.name %></strong>
+        <li class = "sub-list"> Description: <%= task.description
+        %></li>
+        <li class = "sub-list"> Status: <%= task.status
+        %></li>
+        <li class = "sub-list"> Priority: <%= task.priority
+        %></li>
+        <li class = "sub-list"> Start Date <%= task.start_date
+          %></li>
+            <%= link_to("View", task_path(task.id)) %>
+            <%= link_to("Edit", edit_task_path(task)) %>
+
+        </li>
+        <% end %>
+      </ul>
+
+  </main>

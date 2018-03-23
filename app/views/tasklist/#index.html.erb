@@ -17,6 +17,7 @@
     <ul>
       <% @tasks.each do |task| %>
       <li>
+          <%= link_to("Go to the task", tasklist_path(task.id)) %>
         <strong><%= task.name %></strong>
         <li class = "sub-list"> Description: <%= task.description
         %></li>

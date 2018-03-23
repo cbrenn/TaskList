@@ -1,0 +1,13 @@
+
+  <strong><%= @task.name %></strong>
+  <li class = "sub-list"> Description: <%= @task.description
+  %></li>
+  <li class = "sub-list"> Status: <%= @task.status
+  %></li>
+  <li class = "sub-list"> Priority: <%= @task.priority
+  %></li>
+  <li class = "sub-list"> Start Date <%= @task.start_date%>
+  </li>
+  <li>
+    <%= link_to("Go back to all tasks", tasks_path) %>
+  </li>
