@@ -10,40 +10,52 @@
       <li>
           <%= link_to("Add a new Task", new_task_path) %>
       </li>
-
     </ul>
+
 
     <ul>
       <% @tasks.each do |task| %>
-      <aside class = "outer-complete">
-      <li>
-
-        <strong><%= task.name %></strong>
-        <li class = "sub-list"> Description: <%= task.description
-        %></li>
-        <li class = "sub-list"> Status: <%= task.status
-        %></li>
-        <li class = "sub-list"> Priority: <%= task.priority
-        %></li>
-        <li class = "sub-list"> Start Date <%= task.start_date
+        <% if task.completion_date == nil %>
+          <aside class = "not-complete">
+          <li class = "name">
+             <strong><%= task.name %></strong>
+          </li>
+          <li class = "sub-list"> Description: <%= task.description
           %></li>
+          <li class = "sub-list"> Status: <%= task.status
+          %></li>
+          <li class = "sub-list"> Priority: <%= task.priority
+          %></li>
+          <li class = "sub-list"> Start Date <%= task.start_date
+            %></li>
 
-          <% if task.completion_date == nil %>
-              <%= link_to("Mark as Complete", complete_task_path(task), method: :patch) %>
-           <%else%>
-           <aside class = "complete">
-            <%= link_to("Unmark as Complete", uncomplete_task_path(task), method: :patch) %>
+          <%= link_to("Mark as Complete", complete_task_path(task), method: :patch) %>
+
+          <%= link_to("View", task_path(task.id)) %>
+          <%= link_to("Edit", edit_task_path(task)) %>
+          <%= link_to("Delete", task_path(task.id), method: :delete, data: {confirm: "Are you sure you want to delete Task #{task.name}?"})%>
           </aside>
-           <%end%>
+        <% else %>
+            <aside class = "complete">
+             <li class = "task-name">
+                 <strong><%= task.name %></strong>
+             <li class = "sub-list"> Description: <%= task.description
+                 %></li>
+             <li class = "sub-list"> Status: <%= task.status
+                 %></li>
+             <li class = "sub-list"> Priority: <%= task.priority
+                 %></li>
+              <li class = "sub-list"> Start Date <%= task.start_date
+                   %></li>
 
-            <%= link_to("View", task_path(task.id)) %>
-            <%= link_to("Edit", edit_task_path(task)) %>
+               <%= link_to("Unmark as Complete", uncomplete_task_path(task), method: :patch) %>
+                <%= link_to("View", task_path(task.id)) %>
+                <%= link_to("Edit", edit_task_path(task)) %>
 
-            <%= link_to("Delete", task_path(task.id), method: :delete, data: {confirm: "Are you sure you want to delete Task #{task.name}?"})%>
-
-        </li>
-        <% end %>
-      </aside>
-      </ul>
+                <%= link_to("Delete", task_path(task.id), method: :delete, data: {confirm: "Are you sure you want to delete Task #{task.name}?"})%>
+              </aside>
+         <% end %>
+      <% end %>
+    </ul>
 
   </main>
