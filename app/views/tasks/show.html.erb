@@ -8,6 +8,10 @@
   %></li>
   <li class = "sub-list"> Start Date <%= @task.start_date%>
   </li>
+  <% if @task.completion_date != nil %>
+    <li class = "sub-list"> Completion Date <%=@task.completion_date%>
+    </li>
+   <%end%>
   <li>
     <%= link_to("Go back to all tasks", tasks_path) %>
   </li>
