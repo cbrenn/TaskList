@@ -8,14 +8,7 @@ class TasksController < ApplicationController
   end
 
   def create
-
-    raw_task = params[:task]
-
-    task = Task.new
-    task.description = raw_task[:description]
-    task.status =  raw_task[:status]
-    task.priority = raw_task[:priority]
-    task.start_date = raw_task[:start_date]
+    task = Task.new(task_params)
 
 
     if task.save
@@ -36,16 +29,9 @@ class TasksController < ApplicationController
   end
 
   def update
-    raw_task = params[:book]
-
     task = Task.find(params[:id])
 
-    task.update_attributes(
-      description: raw_task[:description],
-      status:  raw_task[:status],
-      priority:  raw_task[:priority],
-      start_date: raw_task[:start_date]
-      )
+    task.assign_attributes(task_params)
 
     if task.save
       redirect_to task_path(task)
@@ -56,5 +42,11 @@ class TasksController < ApplicationController
     Task.destroy(params[:id])
 
     redirect_to tasks_path
+  end
+
+private
+  def task_params
+
+    return params.require(:task).permit(:name, :description, :status, :priority, :start_date)
   end
 end
