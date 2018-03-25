@@ -6,12 +6,15 @@
       </li>
       <li class = "sub-list"> Description: <%= task.description
       %></li>
-      <li class = "sub-list"> Status: <%= task.status
+      <li class = "sub-list"> Status: <% "closed"
       %></li>
-      <li class = "sub-list"> Priority: <%= task.priority
+      <li class = "sub-list"> Priority: <%= nil
       %></li>
       <li class = "sub-list"> Start Date <%= task.start_date
         %></li>
+
+        <li class = "sub-list"> Complete Date <%= task.completion_date
+          %></li>
 
      <%= link_to("Unmark as Complete", uncomplete_task_path(task), method: :patch) %>
       <%= link_to("View", task_path(task.id)) %>

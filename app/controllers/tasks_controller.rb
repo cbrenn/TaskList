@@ -57,6 +57,8 @@ class TasksController < ApplicationController
   def uncomplete
     @task = Task.find(params[:id])
     @task.completion_date = nil
+    @task.status= "open"
+    @task.priority = "high"
     @task.save
 
     if @task.save

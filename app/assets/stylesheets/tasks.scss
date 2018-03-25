@@ -17,7 +17,8 @@ li {
 
 .main-container{
   display:grid;
-  grid-template-columns: 1fr 2fr
+  grid-template-columns: 1fr 2fr 1fr
+
 
 }
 
@@ -26,8 +27,10 @@ li {
   text-decoration: none;
   padding: .3em;
   border: solid black 2px;
-  margin: .5em;
+  margin: 1em;
   text-align: center;
+  max-width: 4em;
+
 }
 
 .complete .task-name {
