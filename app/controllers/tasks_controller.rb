@@ -3,6 +3,10 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
+  def tasks_complete
+    @tasks = Task.all
+  end
+
   def new
       @task = Task.new
   end
@@ -41,6 +45,8 @@ class TasksController < ApplicationController
   def complete
     @task = Task.find(params[:id])
     @task.completion_date = Date.today
+    @task.status = "closed"
+    @task.priority = nil
     @task.save
 
     if @task.save
